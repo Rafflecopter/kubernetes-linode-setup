@@ -1,0 +1,12 @@
+[Unit]
+Description=etcd 2.0 distributed key-value store
+
+[Service]
+Type=notify
+Restart=on-failure
+RestartSec=1
+EnvironmentFile=-/etc/sysconfig/etcd
+ExecStart=/usr/local/bin/etcd
+
+[Install]
+WantedBy=multi-user.target

@@ -1,2 +1,2 @@
-DOCKER_OPTS="--iptables=false --ip-masq=false"
+DOCKER_OPTS=""
 DOCKER_NOFILE=1000000

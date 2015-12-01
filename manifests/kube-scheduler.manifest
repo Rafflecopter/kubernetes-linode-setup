@@ -19,7 +19,7 @@
     "command": [
                  "/bin/sh",
                  "-c",
-                 "/hyperkube scheduler --master=172.17.42.1:8080 --v=2 1>>/var/log/kubernetes/scheduler.log 2>&1"
+                 "/hyperkube scheduler --master=127.0.0.1:8080 --v=2 1>>/var/log/kube-scheduler.log 2>&1"
                ],
     "livenessProbe": {
       "httpGet": {
@@ -33,7 +33,7 @@
     "volumeMounts": [
         {
           "name": "logfile",
-          "mountPath": "/var/log/kubernetes",
+          "mountPath": "/var/log/kube-scheduler.log",
           "readOnly": false
         }
       ]
@@ -42,7 +42,7 @@
 "volumes":[
   { "name": "logfile",
     "hostPath": {
-        "path": "/var/log/kubernetes"}
+        "path": "/var/log/kube-scheduler.log"}
   }
 ]
 }}

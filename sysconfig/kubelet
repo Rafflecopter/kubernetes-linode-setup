@@ -1,1 +1,19 @@
-DAEMON_ARGS="--api-servers=https://kube-master-01 --kubeconfig=/var/lib/kubelet/kubeconfig --config=/etc/kubernetes/manifests --register-node=true --v=2 --cluster_dns=10.0.0.10 --cluster_domain=cluster.local"
+# TODO: remove nginx for other cloud providers.
+
+  # Unless given a specific directive, disable registration for the kubelet
+    # running on the master.
+    # Disable the debugging handlers (/run and /exec) to prevent arbitrary
+    # code execution on the master.
+    # TODO(roberthbailey): Relax this constraint once the master is self-hosted.
+    
+
+
+  
+  
+
+
+# Run containers under the root cgroup and create a system container.
+
+
+
+DAEMON_ARGS="$DAEMON_ARGS  --enable-debugging-handlers=false   --config=/etc/kubernetes/manifests  --allow_privileged=False --v=2 --cluster_dns=10.0.0.10 --cluster_domain=cluster.local    --cgroup_root=docker --system-container=/system --api-servers=https://kube-master-01 "

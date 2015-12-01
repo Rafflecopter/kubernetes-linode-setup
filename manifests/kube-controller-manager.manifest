@@ -1,4 +1,6 @@
-{
+
+  
+   {
 "apiVersion": "v1",
 "kind": "Pod",
 "metadata": {
@@ -19,7 +21,7 @@
     "command": [
                  "/bin/sh",
                  "-c",
-                 "/hyperkube controller-manager --master=172.17.42.1:8080 --cluster-name=test --cluster-cidr=10.10.0.0/16 --root_ca_file=/srv/kubernetes/ca.crt --v=2 1>>/var/log/kubernetes/controller-manager.log 2>&1"
+                 "/hyperkube controller-manager --master=127.0.0.1:8080      --service_account_private_key_file=/srv/kubernetes/server.key --v=2 --root_ca_file=/srv/kubernetes/ca.crt 1>>/var/log/kube-controller-manager.log 2>&1"
                ],
     "livenessProbe": {
       "httpGet": {
@@ -31,11 +33,12 @@
       "timeoutSeconds": 15
     },
     "volumeMounts": [
+        
         { "name": "srvkube",
         "mountPath": "/srv/kubernetes",
         "readOnly": true},
         { "name": "logfile",
-        "mountPath": "/var/log/kubernetes",
+        "mountPath": "/var/log/kube-controller-manager.log",
         "readOnly": false},
         { "name": "etcssl",
         "mountPath": "/etc/ssl",
@@ -65,13 +68,14 @@
     }
 ],
 "volumes":[
+  
   { "name": "srvkube",
     "hostPath": {
         "path": "/srv/kubernetes"}
   },
   { "name": "logfile",
     "hostPath": {
-        "path": "/var/log/kubernetes"}
+        "path": "/var/log/kube-controller-manager.log"}
   },
   { "name": "etcssl",
     "hostPath": {

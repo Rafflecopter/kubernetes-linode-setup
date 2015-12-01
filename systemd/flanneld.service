@@ -4,7 +4,7 @@ Documentation=https://github.com/coreos/flannel
 
 [Service]
 EnvironmentFile=/etc/sysconfig/flanneld
-ExecStart=/usr/bin/flanneld "$DAEMON_ARGS"
+ExecStart=/usr/local/bin/flanneld "$DAEMON_ARGS"
 Restart=on-failure
 LimitNOFILE=65536
 

@@ -1,1 +1,2 @@
-DAEMON_ARGS="--etcd-endpoints=http://kube-master-01:4001 -v=2"
+# test_args has to be kept at the end, so they'll overwrite any prior configuration
+DAEMON_ARGS=" -etcd-endpoints=http://localhost:2379 -v=2"
